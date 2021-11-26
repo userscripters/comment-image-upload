@@ -1,14 +1,19 @@
 // ==UserScript==
-// @author          Jane Doe <jane@doe.com>
+// @author          Oleg Valter <oleg.a.valter@gmail.com>
 // @description     Userscript for uploading comment images
 // @grant           none
 // @homepage        https://github.com/userscripters/comment-image-upload#readme
-// @match           https://*.askubuntu.com/questions/*
-// @match           https://*.mathoverflow.net/questions/*
-// @match           https://*.serverfault.com/questions/*
-// @match           https://*.stackapps.com/questions/*
-// @match           https://*.stackexchange.com/questions/*
-// @match           https://*.stackoverflow.com/questions/*
+// @match           https://*.stackexchange.com/question/*
+// @match           https://askubuntu.com/question/*
+// @match           https://es.stackoverflow.com/question/*
+// @match           https://ja.stackoverflow.com/question/*
+// @match           https://mathoverflow.net/question/*
+// @match           https://pt.stackoverflow.com/question/*
+// @match           https://ru.stackoverflow.com/question/*
+// @match           https://serverfault.com/question/*
+// @match           https://stackapps.com/question/*
+// @match           https://stackoverflow.com/question/*
+// @match           https://superuser.com/question/*
 // @name            Comment Image Upload
 // @namespace       userscripters
 // @run-at          document-start
