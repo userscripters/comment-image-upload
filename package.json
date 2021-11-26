@@ -1,63 +1,58 @@
 {
-  "name": "@userscripters/template",
-  "version": "0.1.0",
-  "description": "template repository for userscripters' projects",
-  "scripts": {
-    "test": "mocha",
-    "lint": "eslint src --fix --ext .js,.ts",
-    "clean": "rm -rf dist",
-    "prebuild": "npm run lint && npm run clean",
-    "uglify-modern": "uglifyjs dist/modern/* --compress --mangle -o dist/modern/index.min.js",
-    "uglify-legacy": "uglifyjs dist/legacy/* --compress --mangle -o dist/legacy/index.min.js",
-    "build-modern": "tsc --outDir dist/modern && npm run uglify-modern",
-    "build-legacy": "tsc --target es5 --outDir dist/legacy && npm run uglify-legacy",
-    "build-all": "bash ./scripts/build.sh",
-    "headers-tm": "bash ./scripts/headers.sh",
-    "readme": "generate-readme",
-    "postversion": "bash ./scripts/postversion.sh"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/userscripters/template.git"
-  },
-  "keywords": [
-    "userscripts",
-    "stackoverflow"
-  ],
-  "author": {
-    "name": "Jane Doe",
-    "email": "jane@doe.com"
-  },
-  "contributors": [
-    {
-      "name": "John Doe",
-      "email": "john@doe.com"
+    "name": "@userscripters/comment-image-upload",
+    "version": "0.1.0",
+    "description": "Userscript for uploading comment images",
+    "scripts": {
+        "test": "mocha",
+        "lint": "eslint src --fix --ext .js,.ts",
+        "clean": "rm -rf dist",
+        "prebuild": "npm run lint && npm run clean",
+        "uglify-modern": "uglifyjs dist/modern/* --compress --mangle -o dist/modern/index.min.js",
+        "uglify-legacy": "uglifyjs dist/legacy/* --compress --mangle -o dist/legacy/index.min.js",
+        "build-modern": "tsc --outDir dist/modern && npm run uglify-modern",
+        "build-legacy": "tsc --target es5 --outDir dist/legacy && npm run uglify-legacy",
+        "build-all": "bash ./scripts/build.sh",
+        "headers-tm": "bash ./scripts/headers.sh",
+        "readme": "generate-readme",
+        "postversion": "bash ./scripts/postversion.sh"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/userscripters/comment-image-upload.git"
+    },
+    "keywords": [
+        "userscripts",
+        "stackoverflow"
+    ],
+    "author": {
+        "name": "Oleg Valter",
+        "email": "oleg.a.valter@gmail.com"
+    },
+    "contributors": [],
+    "license": "GPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/userscripters/comment-image-upload/issues"
+    },
+    "homepage": "https://github.com/userscripters/comment-image-upload#readme",
+    "devDependencies": {
+        "@types/chai": "^4.2.22",
+        "@types/chai-as-promised": "^7.1.4",
+        "@types/greasemonkey": "^4.0.2",
+        "@types/jquery": "^3.5.8",
+        "@types/mocha": "^9.0.0",
+        "@types/tampermonkey": "^4.0.5",
+        "@types/node": "^16.11.9",
+        "@typescript-eslint/eslint-plugin": "^5.4.0",
+        "@typescript-eslint/parser": "^5.4.0",
+        "@userscripters/generate-headers": "^2.6.0",
+        "@userscripters/generate-readme": "^2.1.1",
+        "@userscripters/stackexchange-global-types": "^2.2.1",
+        "chai": "^4.3.4",
+        "chai-as-promised": "^7.1.1",
+        "eslint": "^8.3.0",
+        "mocha": "^9.1.3",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.2",
+        "uglify-js": "^3.14.3"
     }
-  ],
-  "license": "GPL-3.0-or-later",
-  "bugs": {
-    "url": "https://github.com/userscripters/template/issues"
-  },
-  "homepage": "https://github.com/userscripters/template#readme",
-  "devDependencies": {
-    "@types/chai": "^4.2.22",
-    "@types/chai-as-promised": "^7.1.4",
-    "@types/greasemonkey": "^4.0.2",
-    "@types/jquery": "^3.5.8",
-    "@types/mocha": "^9.0.0",
-    "@types/tampermonkey": "^4.0.5",
-    "@types/node": "^16.11.9",
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^5.4.0",
-    "@userscripters/generate-headers": "^2.6.0",
-    "@userscripters/generate-readme": "^2.1.1",
-    "@userscripters/stackexchange-global-types": "^2.2.1",
-    "chai": "^4.3.4",
-    "chai-as-promised": "^7.1.1",
-    "eslint": "^8.3.0",
-    "mocha": "^9.1.3",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.2",
-    "uglify-js": "^3.14.3"
-  }
 }
