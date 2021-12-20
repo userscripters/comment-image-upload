@@ -37,7 +37,7 @@
     },
     "homepage": "https://github.com/userscripters/comment-image-upload#readme",
     "devDependencies": {
-        "@types/chai": "^4.2.22",
+        "@types/chai": "^4.3.0",
         "@types/chai-as-promised": "^7.1.4",
         "@types/greasemonkey": "^4.0.2",
         "@types/jquery": "^3.5.8",
