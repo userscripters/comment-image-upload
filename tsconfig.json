@@ -17,8 +17,8 @@
         "types": [
             "@userscripters/stackexchange-global-types",
             "jquery",
-            "greasemonkey",
-            "tampermonkey"
+            "tampermonkey",
+            "node"
         ]
     },
     "exclude": ["dist"],

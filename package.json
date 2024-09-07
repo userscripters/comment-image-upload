@@ -4,7 +4,7 @@
     "description": "Userscript for uploading comment images",
     "scripts": {
         "test": "mocha",
-        "lint": "eslint src --fix --ext .js,.ts",
+        "lint": "eslint src --fix",
         "clean": "rm -rf dist",
         "prebuild": "npm run lint && npm run clean",
         "uglify-modern": "uglifyjs dist/modern/* --compress --mangle -o dist/modern/index.min.js",
@@ -37,23 +37,21 @@
     },
     "homepage": "https://github.com/userscripters/comment-image-upload#readme",
     "devDependencies": {
+        "@eslint/js": "^9.10.0",
+        "@stylistic/eslint-plugin": "^2.7.2",
         "@types/chai": "^4.3.19",
-        "@types/chai-as-promised": "^7.1.8",
-        "@types/greasemonkey": "^4.0.7",
-        "@types/jquery": "^3.5.30",
         "@types/mocha": "^10.0.7",
         "@types/node": "^20.16.2",
         "@types/tampermonkey": "^5.0.3",
-        "@typescript-eslint/eslint-plugin": "^7.18.0",
-        "@typescript-eslint/parser": "^7.18.0",
         "@userscripters/generate-headers": "^3.4.1",
         "@userscripters/generate-readme": "^3.0.2",
         "@userscripters/stackexchange-global-types": "^2.8.1",
         "chai": "^5.1.1",
-        "eslint": "^8.57.0",
         "mocha": "^10.7.3",
         "ts-node": "^10.9.2",
         "typescript": "^5.5.4",
+        "typescript-eslint": "^8.4.0",
         "uglify-js": "^3.19.3"
-    }
+    },
+    "type": "module"
 }

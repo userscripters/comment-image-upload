@@ -1,7 +1,7 @@
 ((w, d) => {
-    type StacksCommonOptions = {
+    interface StacksCommonOptions {
         classes?: string[];
-    };
+    }
 
     type ButtonType = "outlined" | "link" | "filled";
 
@@ -14,7 +14,7 @@
         loading?: boolean;
     };
 
-    type StacksUploaderOptions = {
+    interface StacksUploaderOptions {
         uploader: [id: string, text: string];
         resetter: [id: string, text: string];
         onReset?: (
@@ -25,13 +25,13 @@
             ev: MouseEvent,
             val: FileList | null
         ) => void | Promise<void>;
-    };
+    }
 
-    type ImageUploadResponse = {
+    interface ImageUploadResponse {
         Success: boolean;
         Error: number;
         UploadedImage: string;
-    };
+    }
 
     type StacksModalOptions = StacksCommonOptions & {
         danger?: boolean;
@@ -49,7 +49,7 @@
             muted = false,
             primary = false,
             type = "filled",
-        }: StacksIconButtonOptions = {}
+        }: StacksIconButtonOptions = {},
     ) => {
         const btn = document.createElement("button");
         btn.id = id;
@@ -87,7 +87,7 @@
             classes = [],
             danger = false,
             fullscreen = false,
-        }: StacksModalOptions = {}
+        }: StacksModalOptions = {},
     ): HTMLElement => {
         const ariaLabelId = "modal-title";
         const ariaDescrId = "modal-description";
@@ -136,7 +136,7 @@
         const iconPath = document.createElementNS(svgNS, "path");
         iconPath.setAttribute(
             "d",
-            "M12 3.41 10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7 12 3.41z"
+            "M12 3.41 10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7 12 3.41z",
         );
 
         closeIcon.append(iconPath);
@@ -149,7 +149,7 @@
     const makeStacksUploader = (
         id: string,
         label: string,
-        { uploader, resetter, onReset, onUpload }: StacksUploaderOptions
+        { uploader, resetter, onReset, onUpload }: StacksUploaderOptions,
     ) => {
         const upl = document.createElement("div");
 
@@ -184,8 +184,8 @@
         });
         uploadBtn.disabled = true;
         uploadBtn.toggleAttribute("data-s-uploader-enable-on-input");
-        uploadBtn.addEventListener("click", (event) =>
-            onUpload(event, input.files)
+        uploadBtn.addEventListener("click", event =>
+            onUpload(event, input.files),
         );
 
         const resetBtn = makeStacksButton(...resetter, {
@@ -193,8 +193,8 @@
         });
         resetBtn.dataset.action = "click->s-uploader#reset";
         resetBtn.toggleAttribute("data-s-uploader-show-on-input");
-        resetBtn.addEventListener("click", (event) =>
-            onReset?.(event, input.files)
+        resetBtn.addEventListener("click", event =>
+            onReset?.(event, input.files),
         );
 
         actionWrap.append(uploadBtn, resetBtn);
@@ -207,7 +207,7 @@
     w.addEventListener("load", () => {
         const uploadModal = makeStacksModal(
             "comment-image-modal",
-            "Image Uploader"
+            "Image Uploader",
         );
         document.body.append(uploadModal);
 
@@ -241,16 +241,16 @@
 
                     if (!res.ok) return;
 
-                    const { Success, UploadedImage } =
-                        (await res.json()) as ImageUploadResponse;
+                    const { Success, UploadedImage }
+                        = (await res.json()) as ImageUploadResponse;
 
                     if (!Success) return;
 
                     const imageMDlink = `[](${UploadedImage})`;
 
-                    //TODO: determine input uniquely
-                    const field = d.querySelector("textarea[name='comment']");
-                    if (!field) return;
+                    // TODO: determine input uniquely
+                    const field = d.querySelector<HTMLElement>("textarea[name='comment']");
+                    if (!field?.textContent) return;
 
                     const updateEvent = new Event("keyup", { bubbles: true });
 
@@ -259,14 +259,14 @@
 
                     Stacks.hideModal(uploadModal);
                 },
-            }
+            },
         );
 
         uploadModal.querySelector(".s-modal--dialog")?.append(uploader);
 
         const addUploadButton = () => {
             const commentFields = d.querySelectorAll(
-                "div.js-comment-text-input-container"
+                "div.js-comment-text-input-container",
             );
 
             commentFields.forEach((field, i) => {
@@ -288,9 +288,9 @@
             const nodes = rs.flatMap(({ addedNodes }) => [...addedNodes]);
 
             const addingCommentInput = nodes.some(
-                (node) =>
-                    node.nodeType !== 3 &&
-                    (node as Element).matches("textarea[name='comment']")
+                node =>
+                    node.nodeType !== 3
+                    && (node as Element).matches("textarea[name='comment']"),
             );
 
             if (!addingCommentInput) return;
