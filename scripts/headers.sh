@@ -3,10 +3,9 @@
 dist="dist"
 output=$dist"/headers.js"
 
-generate tampermonkey \
+generate-headers tampermonkey \
     -o $output \
-    -m all https://domain/question/* \
-    --collapse \
+    -m all meta "https://domain/questions/*" \
     --pretty
 
 userscript="$(find -iwholename "./$dist/*\.js" -type f -not -iname "*headers\.js")"

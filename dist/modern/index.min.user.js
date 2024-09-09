@@ -1,25 +1,34 @@
 // ==UserScript==
-// @author          Oleg Valter <oleg.a.valter@gmail.com>
-// @description     Userscript for uploading comment images
-// @grant           none
-// @homepage        https://github.com/userscripters/comment-image-upload#readme
-// @match           https://*.stackexchange.com/question/*
-// @match           https://askubuntu.com/question/*
-// @match           https://es.stackoverflow.com/question/*
-// @match           https://ja.stackoverflow.com/question/*
-// @match           https://mathoverflow.net/question/*
-// @match           https://pt.stackoverflow.com/question/*
-// @match           https://ru.stackoverflow.com/question/*
-// @match           https://serverfault.com/question/*
-// @match           https://stackapps.com/question/*
-// @match           https://stackoverflow.com/question/*
-// @match           https://superuser.com/question/*
-// @name            Comment Image Upload
-// @namespace       userscripters
-// @run-at          document-start
-// @source          git+https://github.com/userscripters/comment-image-upload.git
-// @supportURL      https://github.com/userscripters/comment-image-upload/issues
-// @version         0.1.0
+// @name           Comment Image Upload
+// @author         Oleg Valter <oleg.a.valter@gmail.com>
+// @description    Userscript for uploading comment images
+// @grant          none
+// @homepage       https://github.com/userscripters/comment-image-upload#readme
+// @match          https://stackoverflow.com/questions/*
+// @match          https://serverfault.com/questions/*
+// @match          https://superuser.com/questions/*
+// @match          https://*.stackexchange.com/questions/*
+// @match          https://askubuntu.com/questions/*
+// @match          https://stackapps.com/questions/*
+// @match          https://mathoverflow.net/questions/*
+// @match          https://pt.stackoverflow.com/questions/*
+// @match          https://ja.stackoverflow.com/questions/*
+// @match          https://ru.stackoverflow.com/questions/*
+// @match          https://es.stackoverflow.com/questions/*
+// @match          https://meta.stackoverflow.com/questions/*
+// @match          https://meta.serverfault.com/questions/*
+// @match          https://meta.superuser.com/questions/*
+// @match          https://meta.askubuntu.com/questions/*
+// @match          https://meta.mathoverflow.net/questions/*
+// @match          https://pt.meta.stackoverflow.com/questions/*
+// @match          https://ja.meta.stackoverflow.com/questions/*
+// @match          https://ru.meta.stackoverflow.com/questions/*
+// @match          https://es.meta.stackoverflow.com/questions/*
+// @namespace      userscripters
+// @run-at         document-start
+// @source         git+https://github.com/userscripters/comment-image-upload.git
+// @supportURL     https://github.com/userscripters/comment-image-upload/issues
+// @version        0.1.0
 // ==/UserScript==
 
-"use strict";((r,i)=>{const g=(e,t,{classes:a=[],title:s,danger:d=!1,loading:n=!1,muted:o=!1,primary:l=!1,type:r="filled"}={})=>{const i=document.createElement("button");return i.id=e,i.textContent=t,i.classList.add("s-btn","s-btn__"+r,...a),i.setAttribute("role","button"),i.setAttribute("aria-label",s||t),d&&i.classList.add("s-btn__danger"),o&&i.classList.add("s-btn__muted"),l&&i.classList.add("s-btn__primary"),n&&i.classList.add("is-loading"),s&&(i.title=s),i};r.addEventListener("load",()=>{var e;const l=((e,t,{classes:a=[],danger:s=!1,fullscreen:d=!1}={})=>{var n="modal-title";const o=document.createElement("aside");o.classList.add("s-modal",...a),o.id=e,o.tabIndex=-1,o.setAttribute("role","dialog"),o.setAttribute("aria-labelledby",n),o.setAttribute("aria-describeddy","modal-description"),o.setAttribute("aria-hidden","true"),s&&o.classList.add("s-modal__danger");const l=o["dataset"];l.sModalTarget="modal",l.controller="s-modal";const r=document.createElement("div");r.classList.add("s-modal--dialog","ps-relative","hmx6","w90"),r.setAttribute("role","document"),r.id=e+"-document",d&&r.classList.add("s-modal__full");const i=document.createElement("h1");i.classList.add("s-modal--header"),i.id=n,i.textContent=t;const c=document.createElement("button");c.classList.add("s-modal--close","s-btn","s-btn__muted"),c.type="button",c.dataset.action="s-modal#hide";t="http://www.w3.org/2000/svg";const u=document.createElementNS(t,"svg");u.setAttribute("aria-hidden","true"),u.setAttribute("viewBox","0 0 14 14"),u.setAttribute("width","14"),u.setAttribute("height","14"),u.classList.add("svg-icon","iconClearSm");const m=document.createElementNS(t,"path");return m.setAttribute("d","M12 3.41 10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7 12 3.41z"),u.append(m),c.append(u),r.append(i,c),o.append(r),o})("comment-image-modal","Image Uploader");document.body.append(l);var t=((e,t,{uploader:a,resetter:s,onReset:d,onUpload:n})=>{const o=document.createElement("div"),l=document.createElement("label");l.classList.add("d-block","s-label","mb4"),l.htmlFor=e,l.textContent=t;const r=document.createElement("div");r.dataset.controller="s-uploader";const i=document.createElement("div");i.classList.add("s-uploader","mb24","wmx3"),i.dataset.target="s-uploader.uploader";const c=document.createElement("input");c.classList.add("s-uploader--input"),c.id=e,c.type="file",c.dataset.action="input->s-uploader#handleInput",c.setAttribute("data-s-uploader-target","input");const u=document.createElement("div");u.classList.add("s-uploader--previews","d-none"),u.dataset.target="s-uploader.previews",u.toggleAttribute("data-s-uploader-show-on-input");const m=document.createElement("div"),p=g(...a,{classes:["s-btn","s-btn__primary"]});p.disabled=!0,p.toggleAttribute("data-s-uploader-enable-on-input"),p.addEventListener("click",e=>n(e,c.files));const b=g(...s,{classes:["s-btn","d-none"]});return b.dataset.action="click->s-uploader#reset",b.toggleAttribute("data-s-uploader-show-on-input"),b.addEventListener("click",e=>null==d?void 0:d(e,c.files)),m.append(p,b),r.append(i,m),i.append(c,u),o.append(l,r),o})("comment-image-uploader","Upload an Image",{resetter:["reset-uploader","Reset"],uploader:["submit-uploader","Upload"],onUpload:async(e,t)=>{if(t){var[a]=t;const s=new FormData;s.append("file",a),s.append("fkey",StackExchange.options.user.fkey);var{location:{hostname:t}}=r;const d=new URL(`https://${t}/upload/image`);d.search=new URLSearchParams({method:"json"}).toString();const n=await fetch(d.toString(),{method:"POST",body:s});if(n.ok){var{Success:a,UploadedImage:t}=await n.json();if(a){a=`[](${t})`;const o=i.querySelector("textarea[name='comment']");o&&(t=new Event("keyup",{bubbles:!0}),o.textContent+=a,o.dispatchEvent(t),Stacks.hideModal(l))}}}}});null!==(e=l.querySelector(".s-modal--dialog"))&&void 0!==e&&e.append(t);const a=()=>{const e=i.querySelectorAll("div.js-comment-text-input-container");e.forEach((e,t)=>{if(!e.querySelector("[id^='upload-']")){const a=g("upload-"+t,"Upload image",{primary:!0});a.addEventListener("click",()=>{Stacks.showModal(l)}),e.append(a)}})},s=new MutationObserver(e=>{const t=e.flatMap(({addedNodes:e})=>[...e]);t.some(e=>3!==e.nodeType&&e.matches("textarea[name='comment']"))&&a()});s.observe(i.body,{childList:!0,subtree:!0}),a()})})(window,document);
+async function uploadImage(e){var a=new FormData,e=(a.append("file",e),a.append("fkey",StackExchange.options.user.fkey),new URL(location.origin+"/upload/image")),a=await fetch(e,{method:"POST",body:a});if(!a.ok)throw new Error(`Request to ${e.toString()} failed.`);var{Success:e,UploadedImage:t}=await a.json();if(e)return t;throw console.error(a),new Error("Failed to upload image.")}async function handleEvent(e){var a=e.target;if(a.matches("textarea.js-comment-text-input")){e.preventDefault();e=e instanceof ClipboardEvent?(null==(t=e.clipboardData)?void 0:t.items)||(null==(t=e.clipboardData)?void 0:t.files):(null==(t=e.dataTransfer)?void 0:t.items)||(null==(t=e.dataTransfer)?void 0:t.files);if(e){var t=[...e].find(e=>e.type.includes("image/"));if(t){e=t instanceof File?t:t.getAsFile();if(e){t=StackExchange.settings.image.maxImageUploadSizeInBytes;if(!(e.size>=t))try{var n=a.selectionStart,i=a.selectionEnd,o=`[Uploading ${e.name}...]()`,r=(a.setRangeText(o,n,i,"start"),await uploadImage(e)),l=(console.log(r),"enter image description here");a.setRangeText(`[${l}](${r})`,n,n+o.length,"start"),a.setSelectionRange(n+1,n+1+l.length,"forward")}catch(e){console.error(e)}}}}}}window.addEventListener("paste",handleEvent),window.addEventListener("drop",handleEvent);
