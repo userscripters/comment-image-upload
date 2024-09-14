@@ -38,10 +38,10 @@
     "homepage": "https://github.com/userscripters/comment-image-upload#readme",
     "devDependencies": {
         "@eslint/js": "^9.10.0",
-        "@stylistic/eslint-plugin": "^2.7.2",
+        "@stylistic/eslint-plugin": "^2.8.0",
         "@types/chai": "^4.3.19",
-        "@types/mocha": "^10.0.7",
-        "@types/node": "^22.5.4",
+        "@types/mocha": "^10.0.8",
+        "@types/node": "^22.5.5",
         "@types/tampermonkey": "^5.0.3",
         "@userscripters/generate-headers": "^3.4.1",
         "@userscripters/generate-readme": "^3.0.2",
@@ -49,8 +49,8 @@
         "chai": "^5.1.1",
         "mocha": "^10.7.3",
         "ts-node": "^10.9.2",
-        "typescript": "^5.5.4",
-        "typescript-eslint": "^8.4.0",
+        "typescript": "^5.6.2",
+        "typescript-eslint": "^8.5.0",
         "uglify-js": "^3.19.3"
     },
     "type": "module"
