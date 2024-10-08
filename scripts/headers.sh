@@ -5,6 +5,7 @@ output=$dist"/headers.js"
 
 generate-headers tampermonkey \
     -o $output \
+    -r "body" \
     -m all meta "https://domain/questions/*" \
     --pretty
 

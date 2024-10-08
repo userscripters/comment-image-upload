@@ -25,7 +25,7 @@
 // @match          https://ru.meta.stackoverflow.com/questions/*
 // @match          https://es.meta.stackoverflow.com/questions/*
 // @namespace      userscripters
-// @run-at         document-start
+// @run-at         document-body
 // @source         git+https://github.com/userscripters/comment-image-upload.git
 // @supportURL     https://github.com/userscripters/comment-image-upload/issues
 // @version        0.1.0
@@ -124,52 +124,71 @@ function uploadImage(file) {
         });
     });
 }
+function findImage(event) {
+    var _a, _b, _c, _d;
+    var items = event instanceof ClipboardEvent
+        ? ((_a = event.clipboardData) === null || _a === void 0 ? void 0 : _a.items) || ((_b = event.clipboardData) === null || _b === void 0 ? void 0 : _b.files)
+        : ((_c = event.dataTransfer) === null || _c === void 0 ? void 0 : _c.items) || ((_d = event.dataTransfer) === null || _d === void 0 ? void 0 : _d.files);
+    if (!items)
+        return;
+    var image = __spreadArray([], __read(items), false).find(function (item) { return item.type.includes("image/"); });
+    if (!image)
+        return;
+    var file = image instanceof File
+        ? image
+        : image.getAsFile();
+    if (!file) {
+        return;
+    }
+    var maxFileSize = StackExchange.settings.image.maxImageUploadSizeInBytes;
+    if (file.size >= maxFileSize) {
+        return;
+    }
+    return file;
+}
+function insertText(file, textarea) {
+    return __awaiter(this, void 0, void 0, function () {
+        var start, end, replaceText, imageUrl, linkDescription;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    start = textarea.selectionStart;
+                    end = textarea.selectionEnd;
+                    replaceText = "[Uploading ".concat(file.name, "...]()");
+                    textarea.setRangeText(replaceText, start, end, "start");
+                    return [4, uploadImage(file)];
+                case 1:
+                    imageUrl = _a.sent();
+                    linkDescription = "enter image description here";
+                    textarea.setRangeText("[".concat(linkDescription, "](").concat(imageUrl, ")"), start, start + replaceText.length, "start");
+                    textarea.setSelectionRange(start + 1, start + 1 + linkDescription.length, "forward");
+                    return [2];
+            }
+        });
+    });
+}
 function handleEvent(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var target, items, image, file, maxFileSize, start, end, replaceText, imageUrl, linkDescription, error_1;
-        var _a, _b, _c, _d;
-        return __generator(this, function (_e) {
-            switch (_e.label) {
+        var target, file, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
                 case 0:
                     target = event.target;
                     if (!target.matches("textarea.js-comment-text-input"))
                         return [2];
                     event.preventDefault();
-                    items = event instanceof ClipboardEvent
-                        ? ((_a = event.clipboardData) === null || _a === void 0 ? void 0 : _a.items) || ((_b = event.clipboardData) === null || _b === void 0 ? void 0 : _b.files)
-                        : ((_c = event.dataTransfer) === null || _c === void 0 ? void 0 : _c.items) || ((_d = event.dataTransfer) === null || _d === void 0 ? void 0 : _d.files);
-                    if (!items)
+                    file = findImage(event);
+                    if (!file)
                         return [2];
-                    image = __spreadArray([], __read(items), false).find(function (item) { return item.type.includes("image/"); });
-                    if (!image)
-                        return [2];
-                    file = image instanceof File
-                        ? image
-                        : image.getAsFile();
-                    if (!file) {
-                        return [2];
-                    }
-                    maxFileSize = StackExchange.settings.image.maxImageUploadSizeInBytes;
-                    if (file.size >= maxFileSize) {
-                        return [2];
-                    }
-                    _e.label = 1;
+                    _a.label = 1;
                 case 1:
-                    _e.trys.push([1, 3, , 4]);
-                    start = target.selectionStart;
-                    end = target.selectionEnd;
-                    replaceText = "[Uploading ".concat(file.name, "...]()");
-                    target.setRangeText(replaceText, start, end, "start");
-                    return [4, uploadImage(file)];
+                    _a.trys.push([1, 3, , 4]);
+                    return [4, insertText(file, target)];
                 case 2:
-                    imageUrl = _e.sent();
-                    console.log(imageUrl);
-                    linkDescription = "enter image description here";
-                    target.setRangeText("[".concat(linkDescription, "](").concat(imageUrl, ")"), start, start + replaceText.length, "start");
-                    target.setSelectionRange(start + 1, start + 1 + linkDescription.length, "forward");
+                    _a.sent();
                     return [3, 4];
                 case 3:
-                    error_1 = _e.sent();
+                    error_1 = _a.sent();
                     console.error(error_1);
                     return [3, 4];
                 case 4: return [2];
@@ -177,7 +196,62 @@ function handleEvent(event) {
         });
     });
 }
+function appendButton(location) {
+    var _this = this;
+    var _a;
+    var input = document.createElement("input");
+    input.type = "file";
+    input.addEventListener("change", function () { return __awaiter(_this, void 0, void 0, function () {
+        var file, textarea, error_2;
+        var _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    file = (_a = input.files) === null || _a === void 0 ? void 0 : _a[0];
+                    textarea = location.querySelector("textarea.js-comment-text-input");
+                    if (!file || !textarea)
+                        return [2];
+                    _b.label = 1;
+                case 1:
+                    _b.trys.push([1, 3, , 4]);
+                    return [4, insertText(file, textarea)];
+                case 2:
+                    _b.sent();
+                    return [3, 4];
+                case 3:
+                    error_2 = _b.sent();
+                    console.error(error_2);
+                    return [3, 4];
+                case 4: return [2];
+            }
+        });
+    }); });
+    var uploadButton = document.createElement("button");
+    uploadButton.classList.add("s-btn", "s-btn__link", "ta-left", "px2");
+    uploadButton.type = "button";
+    uploadButton.innerText = "Upload image";
+    uploadButton.addEventListener("click", function () {
+        input.click();
+    });
+    var helpLink = location.querySelector(".js-comment-help-link");
+    if (!helpLink)
+        return;
+    (_a = helpLink.parentElement) === null || _a === void 0 ? void 0 : _a.classList.add("g4");
+    helpLink.before(uploadButton);
+}
 (function () {
     window.addEventListener("paste", handleEvent);
     window.addEventListener("drop", handleEvent);
+    document
+        .querySelectorAll(".js-add-link")
+        .forEach(function (link) {
+        link.addEventListener("click", function () {
+            setTimeout(function () {
+                var parent = link.closest(".post-layout--right");
+                if (!parent)
+                    return;
+                appendButton(parent);
+            }, 200);
+        });
+    });
 })();

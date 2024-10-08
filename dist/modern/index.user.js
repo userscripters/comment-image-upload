@@ -25,7 +25,7 @@
 // @match          https://ru.meta.stackoverflow.com/questions/*
 // @match          https://es.meta.stackoverflow.com/questions/*
 // @namespace      userscripters
-// @run-at         document-start
+// @run-at         document-body
 // @source         git+https://github.com/userscripters/comment-image-upload.git
 // @supportURL     https://github.com/userscripters/comment-image-upload/issues
 // @version        0.1.0
@@ -51,15 +51,10 @@ async function uploadImage(file) {
     }
     return image;
 }
-async function handleEvent(event) {
-    var _a, _b, _c, _d;
-    const target = event.target;
-    if (!target.matches("textarea.js-comment-text-input"))
-        return;
-    event.preventDefault();
+function findImage(event) {
     const items = event instanceof ClipboardEvent
-        ? ((_a = event.clipboardData) === null || _a === void 0 ? void 0 : _a.items) || ((_b = event.clipboardData) === null || _b === void 0 ? void 0 : _b.files)
-        : ((_c = event.dataTransfer) === null || _c === void 0 ? void 0 : _c.items) || ((_d = event.dataTransfer) === null || _d === void 0 ? void 0 : _d.files);
+        ? event.clipboardData?.items || event.clipboardData?.files
+        : event.dataTransfer?.items || event.dataTransfer?.files;
     if (!items)
         return;
     const image = [...items].find(item => item.type.includes("image/"));
@@ -75,22 +70,74 @@ async function handleEvent(event) {
     if (file.size >= maxFileSize) {
         return;
     }
+    return file;
+}
+async function insertText(file, textarea) {
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const replaceText = `[Uploading ${file.name}...]()`;
+    textarea.setRangeText(replaceText, start, end, "start");
+    const imageUrl = await uploadImage(file);
+    const linkDescription = "enter image description here";
+    textarea.setRangeText(`[${linkDescription}](${imageUrl})`, start, start + replaceText.length, "start");
+    textarea.setSelectionRange(start + 1, start + 1 + linkDescription.length, "forward");
+}
+async function handleEvent(event) {
+    const target = event.target;
+    if (!target.matches("textarea.js-comment-text-input"))
+        return;
+    event.preventDefault();
+    const file = findImage(event);
+    if (!file)
+        return;
     try {
-        const start = target.selectionStart;
-        const end = target.selectionEnd;
-        const replaceText = `[Uploading ${file.name}...]()`;
-        target.setRangeText(replaceText, start, end, "start");
-        const imageUrl = await uploadImage(file);
-        console.log(imageUrl);
-        const linkDescription = "enter image description here";
-        target.setRangeText(`[${linkDescription}](${imageUrl})`, start, start + replaceText.length, "start");
-        target.setSelectionRange(start + 1, start + 1 + linkDescription.length, "forward");
+        await insertText(file, target);
     }
     catch (error) {
         console.error(error);
     }
 }
+function appendButton(location) {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.addEventListener("change", async () => {
+        const file = input.files?.[0];
+        const textarea = location.querySelector("textarea.js-comment-text-input");
+        if (!file || !textarea)
+            return;
+        try {
+            await insertText(file, textarea);
+        }
+        catch (error) {
+            console.error(error);
+        }
+    });
+    const uploadButton = document.createElement("button");
+    uploadButton.classList.add("s-btn", "s-btn__link", "ta-left", "px2");
+    uploadButton.type = "button";
+    uploadButton.innerText = "Upload image";
+    uploadButton.addEventListener("click", () => {
+        input.click();
+    });
+    const helpLink = location.querySelector(".js-comment-help-link");
+    if (!helpLink)
+        return;
+    helpLink.parentElement?.classList.add("g4");
+    helpLink.before(uploadButton);
+}
 (() => {
     window.addEventListener("paste", handleEvent);
     window.addEventListener("drop", handleEvent);
+    document
+        .querySelectorAll(".js-add-link")
+        .forEach((link) => {
+        link.addEventListener("click", () => {
+            setTimeout(() => {
+                const parent = link.closest(".post-layout--right");
+                if (!parent)
+                    return;
+                appendButton(parent);
+            }, 200);
+        });
+    });
 })();

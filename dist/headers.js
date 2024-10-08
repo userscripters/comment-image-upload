@@ -25,7 +25,7 @@
 // @match          https://ru.meta.stackoverflow.com/questions/*
 // @match          https://es.meta.stackoverflow.com/questions/*
 // @namespace      userscripters
-// @run-at         document-start
+// @run-at         document-body
 // @source         git+https://github.com/userscripters/comment-image-upload.git
 // @supportURL     https://github.com/userscripters/comment-image-upload/issues
 // @version        0.1.0

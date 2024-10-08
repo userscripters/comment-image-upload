@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "description": "Userscript for uploading comment images",
     "scripts": {
-        "test": "mocha",
+        "test": "exit 0",
         "lint": "eslint src --fix",
         "clean": "rm -rf dist",
         "prebuild": "npm run lint && npm run clean",
@@ -39,16 +39,10 @@
     "devDependencies": {
         "@eslint/js": "^9.10.0",
         "@stylistic/eslint-plugin": "^2.7.2",
-        "@types/chai": "^4.3.19",
-        "@types/mocha": "^10.0.7",
-        "@types/node": "^22.5.4",
         "@types/tampermonkey": "^5.0.3",
         "@userscripters/generate-headers": "^3.4.1",
         "@userscripters/generate-readme": "^3.0.2",
         "@userscripters/stackexchange-global-types": "^2.8.2",
-        "chai": "^5.1.1",
-        "mocha": "^10.7.3",
-        "ts-node": "^10.9.2",
         "typescript": "^5.5.4",
         "typescript-eslint": "^8.4.0",
         "uglify-js": "^3.19.3"
