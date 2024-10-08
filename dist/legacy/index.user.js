@@ -4,26 +4,36 @@
 // @description    Userscript for uploading comment images
 // @grant          none
 // @homepage       https://github.com/userscripters/comment-image-upload#readme
+// @license        GPL-3.0-or-later
 // @match          https://stackoverflow.com/questions/*
 // @match          https://serverfault.com/questions/*
 // @match          https://superuser.com/questions/*
 // @match          https://*.stackexchange.com/questions/*
+// @match          https://meta.superuser.com/questions/*
+// @match          https://meta.serverfault.com/questions/*
 // @match          https://askubuntu.com/questions/*
+// @match          https://meta.askubuntu.com/questions/*
 // @match          https://stackapps.com/questions/*
 // @match          https://mathoverflow.net/questions/*
-// @match          https://pt.stackoverflow.com/questions/*
-// @match          https://ja.stackoverflow.com/questions/*
-// @match          https://ru.stackoverflow.com/questions/*
-// @match          https://es.stackoverflow.com/questions/*
-// @match          https://meta.stackoverflow.com/questions/*
-// @match          https://meta.serverfault.com/questions/*
-// @match          https://meta.superuser.com/questions/*
-// @match          https://meta.askubuntu.com/questions/*
 // @match          https://meta.mathoverflow.net/questions/*
+// @match          https://pt.stackoverflow.com/questions/*
 // @match          https://pt.meta.stackoverflow.com/questions/*
+// @match          https://meta.stackoverflow.com/questions/*
+// @match          https://ja.stackoverflow.com/questions/*
 // @match          https://ja.meta.stackoverflow.com/questions/*
+// @match          https://ru.stackoverflow.com/questions/*
 // @match          https://ru.meta.stackoverflow.com/questions/*
+// @match          https://es.stackoverflow.com/questions/*
 // @match          https://es.meta.stackoverflow.com/questions/*
+// @match          https://meta.meta.superuser.com/questions/*
+// @match          https://meta.meta.serverfault.com/questions/*
+// @match          https://meta.meta.askubuntu.com/questions/*
+// @match          https://meta.meta.mathoverflow.net/questions/*
+// @match          https://pt.meta.meta.stackoverflow.com/questions/*
+// @match          https://meta.meta.stackoverflow.com/questions/*
+// @match          https://ja.meta.meta.stackoverflow.com/questions/*
+// @match          https://ru.meta.meta.stackoverflow.com/questions/*
+// @match          https://es.meta.meta.stackoverflow.com/questions/*
 // @namespace      userscripters
 // @run-at         document-body
 // @source         git+https://github.com/userscripters/comment-image-upload.git
@@ -42,8 +52,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
