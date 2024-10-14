@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Comment Image Upload
 // @namespace       userscripters
-// @version         0.2.0
+// @version         0.2.1
 // @author          Oleg Valter <oleg.a.valter@gmail.com>
 // @contributors    double beep (https://github.com/double-beep)
 // @description     Userscript for uploading comment images
