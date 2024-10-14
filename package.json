@@ -45,7 +45,7 @@
         "@eslint/js": "^9.12.0",
         "@stylistic/eslint-plugin": "^2.9.0",
         "@types/tampermonkey": "^5.0.3",
-        "@userscripters/generate-headers": "^3.4.2",
+        "@userscripters/generate-headers": "^3.5.0",
         "@userscripters/generate-readme": "^3.0.2",
         "@userscripters/stackexchange-global-types": "^2.8.2",
         "typescript": "^5.6.3",

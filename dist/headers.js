@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name            Comment Image Upload
+// @namespace       userscripters
+// @version         0.2.0
 // @author          Oleg Valter <oleg.a.valter@gmail.com>
 // @contributors    double beep (https://github.com/double-beep)
 // @description     Userscript for uploading comment images
-// @grant           none
-// @homepage        https://github.com/userscripters/comment-image-upload#readme
 // @license         GPL-3.0-or-later
 // @match           https://stackoverflow.com/questions/*
 // @match           https://serverfault.com/questions/*
@@ -26,18 +26,9 @@
 // @match           https://ru.meta.stackoverflow.com/questions/*
 // @match           https://es.stackoverflow.com/questions/*
 // @match           https://es.meta.stackoverflow.com/questions/*
-// @match           https://meta.meta.superuser.com/questions/*
-// @match           https://meta.meta.serverfault.com/questions/*
-// @match           https://meta.meta.askubuntu.com/questions/*
-// @match           https://meta.meta.mathoverflow.net/questions/*
-// @match           https://pt.meta.meta.stackoverflow.com/questions/*
-// @match           https://meta.meta.stackoverflow.com/questions/*
-// @match           https://ja.meta.meta.stackoverflow.com/questions/*
-// @match           https://ru.meta.meta.stackoverflow.com/questions/*
-// @match           https://es.meta.meta.stackoverflow.com/questions/*
-// @namespace       userscripters
+// @grant           none
 // @run-at          document-body
-// @source          git+https://github.com/userscripters/comment-image-upload.git
 // @supportURL      https://github.com/userscripters/comment-image-upload/issues
-// @version         0.2.0
+// @source          git+https://github.com/userscripters/comment-image-upload.git
+// @homepage        https://github.com/userscripters/comment-image-upload#readme
 // ==/UserScript==
