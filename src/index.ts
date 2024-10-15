@@ -95,10 +95,11 @@ async function handleEvent(event: ClipboardEvent | DragEvent): Promise<void> {
     if (!target.matches("textarea.js-comment-text-input")) return;
 
     // https://dev.stackoverflow.com/content/js/wmd.en.js
-    event.preventDefault();
 
     const file = findImage(event);
     if (!file) return;
+
+    event.preventDefault();
 
     try {
         await insertText(file, target);
