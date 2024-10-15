@@ -1,6 +1,6 @@
 {
     "name": "@userscripters/comment-image-upload",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "Userscript for uploading comment images",
     "scripts": {
         "test": "exit 0",

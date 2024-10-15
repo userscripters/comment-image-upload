@@ -7,7 +7,7 @@
 | Name | @userscripters/comment-image-upload |
 | Description | Userscript for uploading comment images |
 | License | [GPL-3.0-or-later](https://spdx.org/licenses/GPL-3.0-or-later) |
-| Version | 0.2.1 |
+| Version | 0.2.2 |
 
 
 # Support

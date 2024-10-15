@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Comment Image Upload
 // @namespace       userscripters
-// @version         0.2.1
+// @version         0.2.2
 // @author          Oleg Valter <oleg.a.valter@gmail.com>
 // @contributors    double beep (https://github.com/double-beep)
 // @description     Userscript for uploading comment images
@@ -88,10 +88,10 @@ async function handleEvent(event) {
     const target = event.target;
     if (!target.matches("textarea.js-comment-text-input"))
         return;
-    event.preventDefault();
     const file = findImage(event);
     if (!file)
         return;
+    event.preventDefault();
     try {
         await insertText(file, target);
     }
