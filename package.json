@@ -42,14 +42,14 @@
     },
     "homepage": "https://github.com/userscripters/comment-image-upload#readme",
     "devDependencies": {
-        "@eslint/js": "^9.35.0",
-        "@stylistic/eslint-plugin": "^5.3.1",
+        "@eslint/js": "^9.36.0",
+        "@stylistic/eslint-plugin": "^5.4.0",
         "@types/tampermonkey": "^5.0.4",
         "@userscripters/generate-headers": "^3.5.0",
         "@userscripters/generate-readme": "^3.0.2",
         "@userscripters/stackexchange-global-types": "^2.8.2",
         "typescript": "^5.9.2",
-        "typescript-eslint": "^8.43.0",
+        "typescript-eslint": "^8.44.0",
         "uglify-js": "^3.19.3"
     },
     "type": "module"
