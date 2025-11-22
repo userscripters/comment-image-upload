@@ -43,13 +43,13 @@
     "homepage": "https://github.com/userscripters/comment-image-upload#readme",
     "devDependencies": {
         "@eslint/js": "^9.39.1",
-        "@stylistic/eslint-plugin": "^5.5.0",
+        "@stylistic/eslint-plugin": "^5.6.1",
         "@types/tampermonkey": "^5.0.5",
         "@userscripters/generate-headers": "^3.5.0",
         "@userscripters/generate-readme": "^3.0.2",
         "@userscripters/stackexchange-global-types": "^2.8.2",
         "typescript": "^5.9.3",
-        "typescript-eslint": "^8.46.4",
+        "typescript-eslint": "^8.47.0",
         "uglify-js": "^3.19.3"
     },
     "type": "module"
