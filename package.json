@@ -42,7 +42,7 @@
     },
     "homepage": "https://github.com/userscripters/comment-image-upload#readme",
     "devDependencies": {
-        "@eslint/js": "^9.39.3",
+        "@eslint/js": "^10.0.1",
         "@stylistic/eslint-plugin": "^5.9.0",
         "@types/tampermonkey": "^5.0.5",
         "@userscripters/generate-headers": "^3.5.0",
